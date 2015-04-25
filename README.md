@@ -14,6 +14,8 @@ bower i webcrypto-jwt
 
 #### Usage
 
+JWT verification:
+
 ```js
 var verifyJWT = require('webcrypto-jwt').verifyJWT;
 
@@ -31,3 +33,12 @@ verifyJWT(token, 'nosecret', 'HS256', function (err, isValid) {
 });
 ```
 
+JWT signing:
+
+```js
+var signJWT = require('webcrypto-jwt').signJWT;
+
+signJWT({foo: 'bar'}, 'secret', 'HS256', function (err, token) {
+  console.log(token);
+});
+```
