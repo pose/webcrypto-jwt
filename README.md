@@ -8,12 +8,22 @@ The following browsers are supported without shims: IE TP, Firefox 35+ and Chrom
 
 #### Install
 
+With npm:
+
 ```js
 npm i webcrypto-jwt
+```
 
-# or
+or with bower:
 
+```js
 bower i webcrypto-jwt
+```
+
+and then add the following script tag:
+
+```html
+<script src="webcrypto-jwt/index.js"></script>
 ```
 
 #### Usage
@@ -43,6 +53,7 @@ JWT signing:
 var signJWT = require('webcrypto-jwt').signJWT;
 
 signJWT({foo: 'bar'}, 'secret', 'HS256', function (err, token) {
+  // ey...
   console.log(token);
 });
 ```
