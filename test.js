@@ -58,6 +58,10 @@ verifyJWT(token, 'secret', 'POSE123', function (err, res) {
 });
 
 assert.throws(function () {
+  verifyJWT();
+});
+
+assert.throws(function () {
   verifyJWT(token, 'secret', 'HS256', null);
 });
 
@@ -104,6 +108,10 @@ signJWT({foo: 'bar'}, 'secret', 'POSE123', function (err, res) {
 
 assert.throws(function () {
   signJWT(token, 'secret', 'HS256', null);
+});
+
+assert.throws(function () {
+  signJWT();
 });
 
 // Roundtrip

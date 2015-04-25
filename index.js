@@ -64,7 +64,11 @@
     return arg !== null && typeof arg === 'object';
   }
 
-  window.verifyJWT = function signJWT(token, secret, alg, cb) {
+  exports.verifyJWT = function signJWT(token, secret, alg, cb) {
+    if (!isFunction(cb)) {
+      throw new Error('cb must be a function');
+    }
+
     if (!isString(token)) {
       return cb(new Error('token must be a string'));
     }
@@ -75,10 +79,6 @@
 
     if (!isString(alg)) {
       return cb(new Error('alg must be a string'));
-    }
-
-    if (!isFunction(cb)) {
-      throw new Error('cb must be a function');
     }
 
     var tokenParts = token.split('.');
@@ -135,7 +135,11 @@
     }, cb);
   };
 
-  window.signJWT = function signJWT(payload, secret, alg, cb) {
+  exports.signJWT = function signJWT(payload, secret, alg, cb) {
+    if (!isFunction(cb)) {
+      throw new Error('cb must be a function');
+    }
+
     if (!isObject(payload)) {
       return cb(new Error('payload must be an object'));
     }
@@ -146,10 +150,6 @@
 
     if (!isString(alg)) {
       return cb(new Error('alg must be a string'));
-    }
-
-    if (!isFunction(cb)) {
-      throw new Error('cb must be a function');
     }
 
     var algorithms = {
