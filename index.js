@@ -1,4 +1,5 @@
 (function () {
+  var exports = (typeof module !== 'undefined' && module.exports)  || window;
 // Adapted from https://chromium.googlesource.com/chromium/blink/+/master/LayoutTests/crypto/subtle/hmac/sign-verify.html
   var Base64URL = {
     stringify: function (a) {
