@@ -2,6 +2,8 @@
 
 JSON Web Tokens (JWT) verify/sign implementation using W3C Web Cryptography (crypto.subtle).
 
+The following browsers are supported without shims: IE TP, Firefox 35+ and Chrome 37+. Safari is not currently working. For more information about compatiblity check [Web Cryptography browser support](http://caniuse.com/#feat=cryptography).
+
 #### Install
 
 ```js
