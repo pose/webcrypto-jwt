@@ -1,5 +1,14 @@
 (function () {
   var exports = (typeof module !== 'undefined' && module.exports)  || window;
+
+  var cryptoSubtle = (window.crypto && crypto.subtle) ||
+    (window.crypto && crypto.webkitSubtle) ||
+    (window.msCrypto && window.msCrypto.Subtle);
+
+  if (!cryptoSubtle) {
+    throw new Error('crypto.subtle not found');
+  }
+
 // Adapted from https://chromium.googlesource.com/chromium/blink/+/master/LayoutTests/crypto/subtle/hmac/sign-verify.html
   var Base64URL = {
     stringify: function (a) {
@@ -105,7 +114,7 @@
     // TODO Test asciiToUint8Array function
     var keyData = asciiToUint8Array(secret);
 
-    crypto.subtle.importKey(
+    cryptoSubtle.importKey(
       'raw',
       keyData,
       importAlgorithm,
@@ -119,8 +128,7 @@
       var messageAsUint8Array = asciiToUint8Array(partialToken);
       // TODO Test asciiToUint8Array function
       var signatureAsUint8Array = asciiToUint8Array(signaturePart);
-
-      crypto.subtle.sign(
+      cryptoSubtle.sign(
         importAlgorithm.name,
         key,
         messageAsUint8Array
@@ -184,7 +192,7 @@
     // TODO Test asciiToUint8Array function
     var keyData = asciiToUint8Array(secret);
 
-    crypto.subtle.importKey(
+    cryptoSubtle.importKey(
       'raw',
       keyData,
       importAlgorithm,
@@ -194,7 +202,7 @@
       // TODO Test asciiToUint8Array function
       var messageAsUint8Array = asciiToUint8Array(partialToken);
 
-      crypto.subtle.sign(
+      cryptoSubtle.sign(
         importAlgorithm.name,
         key,
         messageAsUint8Array
