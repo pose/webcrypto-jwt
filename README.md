@@ -11,13 +11,13 @@ The following browsers are supported without shims: IE TP, Firefox 35+ and Chrom
 With npm:
 
 ```js
-npm i webcrypto-jwt
+npm install webcrypto-jwt
 ```
 
 or with bower:
 
 ```js
-bower i webcrypto-jwt
+bower install webcrypto-jwt
 ```
 
 and then add the following script tag:
