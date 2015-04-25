@@ -1,0 +1,27 @@
+{
+  "name": "webcrypto-jwt",
+  "version": "0.0.1",
+  "description": "JSON Web Tokens (JWT) verify/sign implementation using W3C Web Cryptography (crypto.subtle).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pose/webcrypto-jwt.git"
+  },
+  "keywords": [
+    "jwt",
+    "jsonwebtoken",
+    "w3c",
+    "webcrypto",
+    "crypto",
+    "crypto.subtle"
+  ],
+  "author": "Alberto Pose <albertopose@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pose/webcrypto-jwt/issues"
+  },
+  "homepage": "https://github.com/pose/webcrypto-jwt"
+}

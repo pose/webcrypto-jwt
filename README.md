@@ -1,6 +1,6 @@
 ### webcrypto-jwt
 
-A JSON Web Tokens (JWT) verify/sign implementation using W3C Web Cryptography (crypto.subtle).
+JSON Web Tokens (JWT) verify/sign implementation using W3C Web Cryptography (crypto.subtle).
 
 #### Install
 
