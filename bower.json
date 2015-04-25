@@ -1,7 +1,6 @@
 {
   "name": "webcrypto-jwt",
   "main": "index.js",
-  "version": "0.0.1",
   "homepage": "https://github.com/pose/webcrypto-jwt",
   "authors": [
     "Alberto Pose <albertopose@gmail.com>"
