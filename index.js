@@ -21,16 +21,14 @@
     }
   };
 
-  function asciiToUint8Array(str) {
-      var chars = [];
-      for (var i = 0; i < str.length; ++i) {
-        chars.push(str.charCodeAt(i));
-      }
-      return new Uint8Array(chars);
-  }
-
   function isString(s) {
     return typeof s === 'string';
+  }
+
+  function utf8ToUint8Array(str) {
+      var chars = [];
+      str = window.btoa(unescape(encodeURIComponent(str)));
+      return Base64URL.parse(str);
   }
 
   function isFunction(fn) {
@@ -79,8 +77,8 @@
       return cb(new Error('algorithm not found'));
     }
 
-    // TODO Test asciiToUint8Array function
-    var keyData = asciiToUint8Array(secret);
+    // TODO Test utf8ToUint8Array function
+    var keyData = utf8ToUint8Array(secret);
 
     cryptoSubtle.importKey(
       'raw',
@@ -92,10 +90,10 @@
       var partialToken = tokenParts.slice(0,2).join('.');
       var signaturePart = tokenParts[2];
 
-      // TODO Test asciiToUint8Array function
-      var messageAsUint8Array = asciiToUint8Array(partialToken);
-      // TODO Test asciiToUint8Array function
-      var signatureAsUint8Array = asciiToUint8Array(signaturePart);
+      // TODO Test utf8ToUint8Array function
+      var messageAsUint8Array = utf8ToUint8Array(partialToken);
+      // TODO Test utf8ToUint8Array function
+      var signatureAsUint8Array = utf8ToUint8Array(signaturePart);
       cryptoSubtle.sign(
         importAlgorithm.name,
         key,
@@ -154,11 +152,11 @@
     var header = {alg: alg, typ: 'JWT'};
     var headerAsJSON = JSON.stringify(header);
 
-    var partialToken = Base64URL.stringify(asciiToUint8Array(headerAsJSON)) + '.' +
-       Base64URL.stringify(asciiToUint8Array(payloadAsJSON));
+    var partialToken = Base64URL.stringify(utf8ToUint8Array(headerAsJSON)) + '.' +
+       Base64URL.stringify(utf8ToUint8Array(payloadAsJSON));
 
-    // TODO Test asciiToUint8Array function
-    var keyData = asciiToUint8Array(secret);
+    // TODO Test utf8ToUint8Array function
+    var keyData = utf8ToUint8Array(secret);
 
     cryptoSubtle.importKey(
       'raw',
@@ -167,8 +165,18 @@
       false,
       ['sign']
     ).then(function (key) {
-      // TODO Test asciiToUint8Array function
-      var messageAsUint8Array = asciiToUint8Array(partialToken);
+      var characters = payloadAsJSON.split('');
+      var it = utf8ToUint8Array(payloadAsJSON).entries();
+      var i = 0;
+      var result = [];
+
+      while (!(current = it.next()).done) {
+        result.push([current.value[1], characters[i]]);
+        i++;
+      }
+
+      // TODO Test utf8ToUint8Array function
+      var messageAsUint8Array = utf8ToUint8Array(partialToken);
 
       cryptoSubtle.sign(
         importAlgorithm.name,
