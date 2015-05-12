@@ -1,6 +1,6 @@
 {
   "name": "webcrypto-jwt",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "JSON Web Tokens (JWT) verify/sign implementation using W3C Web Cryptography (crypto.subtle).",
   "main": "index.js",
   "scripts": {
