@@ -1,3 +1,9 @@
+## [0.1.0] - 2015-05-12
+- [7d53420] Fixing utf8 encoding/decoding. (`Alberto Pose`)
+- [2073332] Adding `decodeJWT` method. (`Alberto Pose`)
+- [58048fe] Removing unused functions. (`Alberto Pose`)
+- [ba7c492] Small style fixes (" -> ') (`Alberto Pose`)
+
 ## [0.0.4] - 2015-04-25
 - [9d699a9] Adding crypto prefixes for IE and Safari. (`Alberto Pose`)
 - [9df42b7] Adding browser support notice. (`Alberto Pose`)
