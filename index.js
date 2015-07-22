@@ -220,6 +220,6 @@
 
   exports.parseJWT = function (token) {
     return JSON.parse(decodeJWT(token));
-  }
+  };
 
 }());
