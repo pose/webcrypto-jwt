@@ -219,6 +219,8 @@
   };
 
   exports.parseJWT = function (token) {
+    // TODO: Handle when decodeJWT fails.
+    // TODO: Handle when JSON.parse fails.
     return JSON.parse(decodeJWT(token));
   };
 
