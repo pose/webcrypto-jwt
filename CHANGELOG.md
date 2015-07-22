@@ -1,3 +1,6 @@
+## [0.2.1] - 2015-07-21
+ - Fixed parseJWT when decodeJWT is not global. (`Rodrigo Lopez Dato`)
+
 ## [0.2.0] - 2015-07-21
  - Added tests for utf-8 and emoji. (`Alberto Pose`)
  - Added `parseJWT`. Added tests for both `parseJWT` and `decodeJWT`. (`Rodrigo Lopez Dato`)
