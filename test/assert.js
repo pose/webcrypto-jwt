@@ -8,7 +8,24 @@ assert.ifError = function(err) {
 };
 
 assert.equal = function(a, b) {
-  console.assert(a === b, '"' +  a + '" != "' + b + '"');
+  function isEqual(x, y) {
+   if (x === y) {
+     return true;
+   } else if (typeof x === 'object' && typeof y === 'object') {
+     var keys = Object.keys(x);
+
+     if (keys.length !== Object.keys(y).length) {
+       return false;
+     }
+
+     return keys.every(function (key) {
+       return isEqual(x[key], y[key]);
+     });
+   } else {
+     return false;
+   }
+  }
+  console.assert(isEqual(a, b), '"' +  JSON.stringify(a) + '" != "' + JSON.stringify(b) + '"');
 };
 
 function _throws(shouldThrow, block, expected, message) {

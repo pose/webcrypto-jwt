@@ -28,23 +28,27 @@ and then add the following script tag:
 
 #### Usage
 
-JWT verification:
+JWT verification and decoding:
 
 ```js
-var verifyJWT = require('webcrypto-jwt').verifyJWT;
+var jwt = require('webcrypto-jwt');
 
 // token signed using 'secret' as secret
 var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
   'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.' +
   'TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ';
 
-verifyJWT(token, 'secret', 'HS256', function (err, isValid) {
+jwt.verifyJWT(token, 'secret', 'HS256', function (err, isValid) {
   console.log(isValid); // true
 });
 
-verifyJWT(token, 'nosecret', 'HS256', function (err, isValid) {
+jwt.verifyJWT(token, 'nosecret', 'HS256', function (err, isValid) {
   console.log(isValid); // false
 });
+
+jwt.decodeJWT(token); // '{"sub":"1234567890","name":"John Doe","admin":true}'
+
+jwt.parseJWT(token) // Object {sub: "1234567890", name: "John Doe", admin: true}
 ```
 
 JWT signing:
