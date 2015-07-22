@@ -1,3 +1,7 @@
+## [0.2.0] - 2015-07-21
+ - Added tests for utf-8 and emoji. (`Alberto Pose`)
+ - Added `parseJWT`. Added tests for both `parseJWT` and `decodeJWT`. (`Rodrigo Lopez Dato`)
+
 ## [0.1.0] - 2015-05-12
 - [7d53420] Fixing utf8 encoding/decoding. (`Alberto Pose`)
 - [2073332] Adding `decodeJWT` method. (`Alberto Pose`)
