@@ -132,5 +132,27 @@ signJWT({foo: 'bar'}, 'secret', 'HS256', function (err, token) {
   });
 });
 
-// TODO Handle UTF8
-// TODO Test smileys 😱 (ctrl + cmd + space)
+var emojiString = {'hello 😉': 'bye 😬'};
+
+signJWT(emojiString, 'secret', 'HS256', function (err, token) {
+  assert.ifError(err);
+  assert(token);
+  verifyJWT(token, 'secret', 'HS256', function (err, valid) {
+    assert.ifError(err);
+    assert(valid);
+    var result = decodeJWT(token);
+    assert.equal(result, JSON.stringify(emojiString));
+  });
+});
+
+var utf8String = {'phone': 'John’s Phone'};
+signJWT(emojiString, 'secret', 'HS256', function (err, token) {
+  assert.ifError(err);
+  assert(token);
+  verifyJWT(token, 'secret', 'HS256', function (err, valid) {
+    assert.ifError(err);
+    assert(valid);
+    var result = decodeJWT(token);
+    assert.equal(result, JSON.stringify(emojiString));
+  });
+});
