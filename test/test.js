@@ -12,6 +12,8 @@ var claims = {
 
 assert.equal(claims, parseJWT(token));
 
+assert.equal(JSON.stringify(claims), decodeJWT(token));
+
 verifyJWT(token, 'secret', 'HS256', function (err, res) {
   assert.ifError(err);
   assert.equal(true, res);
