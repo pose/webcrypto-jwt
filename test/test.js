@@ -4,6 +4,14 @@ var token = [
   'TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ'
 ].join('.');
 
+var claims = {
+  sub: '1234567890',
+  name: 'John Doe',
+  admin: true
+}
+
+assert.equal(claims, parseJWT(token));
+
 verifyJWT(token, 'secret', 'HS256', function (err, res) {
   assert.ifError(err);
   assert.equal(true, res);
