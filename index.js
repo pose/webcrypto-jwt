@@ -169,6 +169,7 @@
       var it = utf8ToUint8Array(payloadAsJSON).entries();
       var i = 0;
       var result = [];
+      var current;
 
       while (!(current = it.next()).done) {
         result.push([current.value[1], characters[i]]);
